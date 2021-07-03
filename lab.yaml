@@ -10,73 +10,63 @@ topology:
       kind: crpd
       ports:
         - 2201:22
-        - 1701:179
         - 8301:830
     ce2:
       kind: crpd
       ports:
         - 2202:22
-        - 1702:179
         - 8302:830
     ce3:
       kind: crpd
       ports:
         - 2203:22
-        - 1703:179
         - 8303:830
     ce4:
       kind: crpd
       ports:
         - 2204:22
-        - 1704:179
         - 8304:830
     pe1:
       kind: crpd
       ports:
         - 2205:22
-        - 1705:179
         - 8305:830
     pe2:
       kind: crpd
       ports:
         - 2206:22
-        - 1706:179
         - 8306:830
     pe3:
       kind: crpd
       ports:
         - 2207:22
-        - 1707:179
         - 8307:830
     pe4:
       kind: crpd
       ports:
         - 2208:22
-        - 1708:179
         - 8308:830
     p1:
       kind: crpd
       ports:
         - 2209:22
-        - 1709:179
+        - 1791:179
         - 8309:830
     p2:
       kind: crpd
       ports:
         - 2210:22
-        - 1710:179
+        - 1792:179
         - 8310:830
     rr1:
       kind: crpd
       ports:
         - 2211:22
-        - 1711:179
         - 8311:830
     rr2:
       kind: crpd
       ports:
         - 2212:22
-        - 1712:179
         - 8313:830
     client1:
       kind: "linux"
@@ -91,45 +81,34 @@ topology:
 
   links:
     # crpd <-> br-clab connections
-    - endpoints: ["ce1:eth1", "br-clab:eth1"]
-    - endpoints: ["ce2:eth1", "br-clab:eth2"]
-    - endpoints: ["ce3:eth1", "br-clab:eth3"]
-    - endpoints: ["ce4:eth1", "br-clab:eth4"]
-    - endpoints: ["pe1:eth1", "br-clab:eth5"]
-    - endpoints: ["pe2:eth1", "br-clab:eth6"]
-    - endpoints: ["pe3:eth1", "br-clab:eth7"]
-    - endpoints: ["pe4:eth1", "br-clab:eth8"]
-    - endpoints: ["p1:eth1", "br-clab:eth9"]
-    - endpoints: ["p2:eth1", "br-clab:eth10"]
-    - endpoints: ["rr1:eth1", "br-clab:eth11"]
-    - endpoints: ["rr2:eth1", "br-clab:eth12"]
+    - endpoints: ["p1:eth1", "br-clab:eth1"]
+    - endpoints: ["p2:eth1", "br-clab:eth2"]
 
     # ce <-> pe connections
-    - endpoints: ["ce1:eth2", "pe1:eth2"]
-    - endpoints: ["ce2:eth2", "pe2:eth2"]
-    - endpoints: ["ce3:eth2", "pe3:eth2"]
-    - endpoints: ["ce4:eth2", "pe4:eth2"]
+    - endpoints: ["ce1:eth1", "pe1:eth1"]
+    - endpoints: ["ce2:eth1", "pe2:eth1"]
+    - endpoints: ["ce3:eth1", "pe3:eth1"]
+    - endpoints: ["ce4:eth1", "pe4:eth1"]
+
+    # client connections
+    - endpoints: ["client1:eth1", "ce1:eth2"]
+    - endpoints: ["client2:eth1", "ce2:eth2"]
+    - endpoints: ["client3:eth1", "ce3:eth2"]
+    - endpoints: ["client4:eth1", "ce4:eth2"]
 
     # pe <-> p connections
-    - endpoints: ["pe1:eth3", "p1:eth2"]
-    - endpoints: ["pe1:eth4", "p2:eth2"]
-    - endpoints: ["pe2:eth3", "p1:eth3"]
-    - endpoints: ["pe2:eth4", "p2:eth3"]
-    - endpoints: ["pe3:eth3", "p1:eth4"]
-    - endpoints: ["pe3:eth4", "p2:eth4"]
-    - endpoints: ["pe4:eth3", "p1:eth5"]
-    - endpoints: ["pe4:eth4", "p2:eth5"]
+    - endpoints: ["pe1:eth2", "p1:eth2"]
+    - endpoints: ["pe1:eth3", "p2:eth2"]
+    - endpoints: ["pe2:eth2", "p1:eth3"]
+    - endpoints: ["pe2:eth3", "p2:eth3"]
+    - endpoints: ["pe3:eth2", "p1:eth4"]
+    - endpoints: ["pe3:eth3", "p2:eth4"]
+    - endpoints: ["pe4:eth2", "p1:eth5"]
+    - endpoints: ["pe4:eth3", "p2:eth5"]
 
     # p <-> p connections
     - endpoints: ["p1:eth6", "p2:eth6"]
 
     # p <-> rr connections
-    - endpoints: ["p1:eth7", "rr1:eth2"]
-    - endpoints: ["p2:eth7", "rr2:eth2"]
-
-    # client connections
-    - endpoints: ["client1:eth1", "ce1:eth3"]
-    - endpoints: ["client2:eth1", "ce2:eth3"]
-    - endpoints: ["client3:eth1", "ce3:eth3"]
-    - endpoints: ["client4:eth1", "ce4:eth3"]
-
+    - endpoints: ["p1:eth7", "rr1:eth1"]
+    - endpoints: ["p2:eth7", "rr2:eth1"]
